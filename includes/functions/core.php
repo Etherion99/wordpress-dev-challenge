@@ -56,13 +56,17 @@ function find_broken_links(): array {
 			foreach ($post_links as $link) {
 				$status = get_link_status($link);
 
+				// Check if the link is not valid.
 				if ($status !== 'valid') {
 					$link_data = array(
 						'url' => $link,
 						'status' => $status
 					);
 
-					$links[] = $link_data;
+					// Check if the link doesn't exist to avoid duplicates.
+					if (!in_array($link_data, $links)) {
+						$links[] = $link_data;
+					}
 				}
 			}
 		}
@@ -118,8 +122,6 @@ function get_link_results(): array {
 
 	foreach ($posts as $post) {
 		$last_link_result = get_post_meta($post->ID, 'last-link-result', true);
-		var_dump($post->ID, $last_link_result);
-		echo '<br><br>';
 
 		if (empty($last_link_result)) {
 			continue;
