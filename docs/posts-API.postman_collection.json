@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "7cf08364-ed11-4ef9-85b5-28c4fedfecf9",
+		"name": "posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8270922",
+		"_collection_link": "https://www.postman.com/etherion99/workspace/wordpress-posts-api/collection/8270922-7cf08364-ed11-4ef9-85b5-28c4fedfecf9?action=share&creator=8270922&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Get All Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/45/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts",
+						"45",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By Slug",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/test/slug",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts",
+						"test",
+						"slug"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"post_title\": \"Mi nuevo post\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"post_title\": \"Mi nuevo post22442\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/update/45",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts",
+						"update",
+						"45"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"post_title\": \"Mi nuevo post22442\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/delete/45",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"wordpress",
+						"wp-json",
+						"react",
+						"v1",
+						"posts",
+						"delete",
+						"45"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

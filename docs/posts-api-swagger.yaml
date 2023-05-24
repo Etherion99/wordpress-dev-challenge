@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+paths:
+  /posts:
+    get:
+      summary: Get all posts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponseData'
+    post:
+      summary: Create a post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequestData'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponseData'
+  /posts/{identifier}/{type}:
+    get:
+      summary: Get a specific post by ID or slug
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponseData'
+  /posts/update/{id}:
+    put:
+      summary: Update a post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequestData'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponseData'
+  /posts/delete/{id}:
+    delete:
+      summary: Delete a post by ID or slug
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    PostRequestData:
+      type: object
+      properties:
+        post_title:
+          type: string
+        post_content:
+          type: string
+        post_status:
+          type: string
+        categories:
+          type: array
+          items:
+            type: integer
+    PostResponseData:
+      type: object
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        link:
+          type: string
+        title:
+          type: string
+        featured_image:
+          type: boolean
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryData'
+        content:
+          type: string
+        meta_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetaFieldData'
+    CategoryData:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+    MetaFieldData:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
