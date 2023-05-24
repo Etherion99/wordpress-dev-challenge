@@ -114,6 +114,12 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
 
 	        register_activation_hook( ETHERION_TOOLS_PLUGIN_FILE, array( $this, 'activate_plugin' ) );
 	        register_deactivation_hook( ETHERION_TOOLS_PLUGIN_FILE, array( $this, 'deactivate_plugin' ) );
+
+	        add_action('rest_api_init', function(){
+		        // Init posts API
+		        $posts_API = new Posts_API();
+				$posts_API->register_routes();
+	        });
         }
 
         /**
@@ -133,7 +139,7 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
 	     * Activate the plugin
 	     */
 	    public function activate_plugin(): void {
-			//
+			// Register link analysis cron job
 		    register_link_analysis_cron();
 	    }
 
@@ -141,6 +147,7 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
 	     * Deactivate the plugin
 	     */
 	    public function deactivate_plugin(): void {
+		    // remove link analysis cron job
 		    wp_clear_scheduled_hook('link_analysis_cron');
 	    }
     }
