@@ -1,0 +1,8 @@
+.submit{
+    text-align: center !important;
+}
+
+.submit .button{
+    font-size: 1.5rem;
+    padding: 0 .5rem;
+}

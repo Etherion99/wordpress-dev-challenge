@@ -19,9 +19,9 @@ class Link_Status_Table extends WP_List_Table {
 
 	public function get_columns(): array {
 		return array(
-			'url'     => 'URL',
-			'status'  => 'Status',
-			'posts'   => 'Posts'
+			'url'     => __('URL', 'etherion-tools'),
+			'status'  => __('Status', 'etherion-tools'),
+			'posts'   => __('Posts', 'etherion-tools')
 		);
 	}
 
@@ -49,15 +49,15 @@ class Link_Status_Table extends WP_List_Table {
 	private function get_status_text($status): string {
 		switch ($status) {
 			case 'insecure':
-				return 'Enlace inseguro';
+				return __('Insecure Link', 'etherion-tools');
 			case 'no-protocol':
-				return 'Enlace sin protocolo';
+				return __('Link without Protocol', 'etherion-tools');
 			case 'malformed':
-				return 'Enlace malformado';
+				return __('Malformed Link', 'etherion-tools');
 			default:
 				// Extract status code
 				if (preg_match('/^status-code: (\d+)$/', $status, $matches))
-					return 'Enlace con estatus:'.' '.$matches[1];
+					return __('Link wirh status', 'etherion-tools').': '.$matches[1];
 
 				return '';
 		}
