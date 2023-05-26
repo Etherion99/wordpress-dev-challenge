@@ -13,13 +13,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
@@ -35,13 +36,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/45/id",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts/45/id",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
@@ -59,13 +61,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/test/slug",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts/test/slug",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
@@ -81,7 +84,13 @@
 			"name": "Create a new post",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "123",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"post_title\": \"Mi nuevo post\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
@@ -92,13 +101,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
@@ -112,7 +122,13 @@
 			"name": "Update a post",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "123",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"post_title\": \"Mi nuevo post22442\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
@@ -123,19 +139,20 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/update/45",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts/update/58",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
 						"posts",
 						"update",
-						"45"
+						"58"
 					]
 				}
 			},
@@ -145,7 +162,13 @@
 			"name": "Delete a post",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "123",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"post_title\": \"Mi nuevo post22442\",\r\n  \"post_content\": \"Contenido del post\",\r\n  \"post_status\": \"publish\",\r\n  \"categories\": [1]\r\n}",
@@ -156,19 +179,20 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost/wordpress/wp-json/react/v1/posts/delete/45",
-					"protocol": "http",
+					"raw": "https://sebastian-trujillo.me/wordpress-test/wp-json/react/v1/posts/delete/11",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"sebastian-trujillo",
+						"me"
 					],
 					"path": [
-						"wordpress",
+						"wordpress-test",
 						"wp-json",
 						"react",
 						"v1",
 						"posts",
 						"delete",
-						"45"
+						"11"
 					]
 				}
 			},
