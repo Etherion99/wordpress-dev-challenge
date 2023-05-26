@@ -37,19 +37,19 @@ class Posts_API {
 		register_rest_route($this->namespace, '/posts', array(
 			'methods' => 'POST',
 			'callback' => array($this, 'create_post'),
-			'permission_callback' => '__return_true'
+			'permission_callback' => array($this, 'check_authentication')
 		));
 
 		register_rest_route($this->namespace, '/posts/update/(?P<id>\d+)', array(
 			'methods' => 'PUT',
 			'callback' => array($this, 'update_post'),
-			'permission_callback' => '__return_true'
+			'permission_callback' => array($this, 'check_authentication')
 		));
 
 		register_rest_route($this->namespace, '/posts/delete/(?P<id>\d+)', array(
 			'methods' => 'DELETE',
 			'callback' => array($this, 'delete_post'),
-			'permission_callback' => '__return_true',
+			'permission_callback' => array($this, 'check_authentication')
 		));
 	}
 
@@ -196,8 +196,11 @@ class Posts_API {
 	 * Check authentication for authenticated requests
 	 * @return bool
 	 */
-	private function check_authentication(): bool {
-		return true;
+	public function check_authentication($request): bool {
+		$token = $request->get_header('Authorization');
+		$auth_key = get_option('auth_key');
+
+		return $token === $auth_key;
 	}
 
 	private function get_post_data($post): array {
@@ -237,5 +240,16 @@ class Posts_API {
 		}
 
 		return $post_data;
+	}
+
+	public function register_settings(): void {
+		register_setting('etherion-tools-settings-group', 'auth_key');
+	}
+
+	public function save_settings(): void {
+		if (isset($_POST['auth_key'])) {
+			$auth_key = sanitize_text_field($_POST['auth_key']);
+			update_option('auth_key', $auth_key);
+		}
 	}
 }

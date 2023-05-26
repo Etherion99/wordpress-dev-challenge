@@ -140,7 +140,7 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
          * Define etherion_tools menus
          */
         public function define_menus(): void {
-			add_menu_page(
+			add_options_page(
 				'Etherion Tools',
 				'Etherion Kit Tools',
 				'manage_options',
