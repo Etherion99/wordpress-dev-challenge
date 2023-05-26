@@ -76,15 +76,15 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
          * etherion_tools class constructor.
          */
         public function __construct() {
-            $this->load_plugin_textdomain();
             $this->define_constants();
-            $this->includes();
+	        $this->load_plugin_textdomain();
+	        $this->includes();
 			$this->init_classes();
             $this->define_actions();
         }
 
-        public function load_plugin_textdomain(): void {
-            load_plugin_textdomain( 'Etherion_Tools', false, basename( dirname( __FILE__ ) ) . '/lang/' );
+        public function load_plugin_textdomain(): void { 
+            load_plugin_textdomain( 'etherion-tools', false, dirname(ETHERION_TOOLS_PLUGIN_BASENAME) . '/lang/' );
         }
 
         /**
