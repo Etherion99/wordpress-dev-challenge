@@ -50,6 +50,14 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
          */
         protected static $instance = null;
 
+	    /**
+	     * The instance of the Posts API class.
+	     *
+	     * @var Posts_API
+	     * @since 1.0.0
+	     */
+	    private Posts_API $posts_API;
+
         /**
          * Main etherion_tools instance.
          *
@@ -71,6 +79,7 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
             $this->load_plugin_textdomain();
             $this->define_constants();
             $this->includes();
+			$this->init_classes();
             $this->define_actions();
         }
 
@@ -86,13 +95,20 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
             require_once __DIR__ . '/includes/includes.php';
         }
 
+	    /**
+	     * Init required classes
+	     */
+	    public function init_classes(): void {
+		    $this->posts_API = new Posts_API();
+	    }
+
         /**
          * Get the plugin path.
          *
          * @return string
          */
         public function plugin_path(): string {
-            return untrailingslashit( plugin_dir_path( __FILE__ ) );
+            return untrailingslashit(plugin_dir_path(__FILE__ ));
         }
 
 
@@ -115,11 +131,9 @@ if ( ! class_exists( 'Etherion_Tools' ) ) {
 	        register_activation_hook( ETHERION_TOOLS_PLUGIN_FILE, array( $this, 'activate_plugin' ) );
 	        register_deactivation_hook( ETHERION_TOOLS_PLUGIN_FILE, array( $this, 'deactivate_plugin' ) );
 
-	        add_action('rest_api_init', function(){
-		        // Init posts API
-		        $posts_API = new Posts_API();
-				$posts_API->register_routes();
-	        });
+	        add_action('rest_api_init', array($this->posts_API, 'register_routes'));
+
+	        add_action('admin_init', array($this->posts_API, 'register_settings'));
         }
 
         /**
