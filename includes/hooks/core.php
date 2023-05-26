@@ -15,8 +15,8 @@ function register_link_analysis_cron(): void {
 // Create custom cron intervals
 function custom_cron_schedules( $schedules ) {
 	$schedules['link_analysis_interval'] = array(
-		'interval' => 5,
-		'display' => __('Link Analysis Interval')
+		'interval' => 1800,
+		'display' => __('Link Analysis Interval', 'etherion-tools')
 	);
 	return $schedules;
 }

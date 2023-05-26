@@ -26,7 +26,7 @@ function find_broken_links(): array {
 			),
 			array(
 				'key'     => 'last-link-analysis',
-				'value'   => strtotime('-5 seconds', current_time('timestamp')),
+				'value'   => strtotime('-4 days', current_time('timestamp')),
 				'compare' => '<=',
 			)
 		),
